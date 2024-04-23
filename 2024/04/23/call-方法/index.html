@@ -16,22 +16,22 @@
   <meta name="author" content="doilion">
   <meta name="keywords" content="">
   
-    <meta name="description" content="OS模块官方文档 这一部分主要是集中于文件的处理的部分，其它关于os模块的地方可以去看官方文档。 1.文件路径os.path获取组合路径os.path.join  1234import ospath &#x3D; os.path.join(&quot;folder&quot;,&quot;subfolder&quot;,&quot;file.ext&quot;)print(path) # folder\su">
+    <meta name="description" content="__call__方法__call__是Python中的一个魔术方法，也称作是类方法。 它的作用是将类的实例变成可调用对象，类似于函数一样被调用。 __call__使用举例 123456class MyClass：	def __call__(self, x, y):        return x + yobj &#x3D; MyClass()print(obj(1, 2))  对比于其它类别的使用 1234">
 <meta property="og:type" content="article">
-<meta property="og:title" content="os路径模块">
-<meta property="og:url" content="http://example.com/2024/04/23/os%E8%B7%AF%E5%BE%84%E6%A8%A1%E5%9D%97/index.html">
+<meta property="og:title" content="__call__方法">
+<meta property="og:url" content="http://example.com/2024/04/23/call-%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="doilion blog">
-<meta property="og:description" content="OS模块官方文档 这一部分主要是集中于文件的处理的部分，其它关于os模块的地方可以去看官方文档。 1.文件路径os.path获取组合路径os.path.join  1234import ospath &#x3D; os.path.join(&quot;folder&quot;,&quot;subfolder&quot;,&quot;file.ext&quot;)print(path) # folder\su">
+<meta property="og:description" content="__call__方法__call__是Python中的一个魔术方法，也称作是类方法。 它的作用是将类的实例变成可调用对象，类似于函数一样被调用。 __call__使用举例 123456class MyClass：	def __call__(self, x, y):        return x + yobj &#x3D; MyClass()print(obj(1, 2))  对比于其它类别的使用 1234">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-23T07:31:51.000Z">
-<meta property="article:modified_time" content="2024-04-23T07:32:28.000Z">
+<meta property="article:published_time" content="2024-04-23T08:04:27.000Z">
+<meta property="article:modified_time" content="2024-04-23T08:05:00.000Z">
 <meta property="article:author" content="doilion">
 <meta property="article:tag" content="python基础">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>os路径模块 - doilion blog</title>
+  <title>__call__方法 - doilion blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -226,7 +226,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="os路径模块"></span>
+            <span id="subtitle" data-typed-text="__call__方法"></span>
           
         </div>
 
@@ -237,7 +237,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-04-23 15:31" pubdate>
+        <time datetime="2024-04-23 16:04" pubdate>
           2024年4月23日 下午
         </time>
       </span>
@@ -249,7 +249,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.6k 字
+          281 字
         
       </span>
     
@@ -260,7 +260,7 @@
         
         
         
-          23 分钟
+          3 分钟
         
       </span>
     
@@ -305,82 +305,20 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">os路径模块</h1>
+            <h1 id="seo-header">__call__方法</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="OS模块"><a href="#OS模块" class="headerlink" title="OS模块"></a>OS模块</h3><p><a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/os.html">官方文档</a></p>
-<p>这一部分主要是集中于文件的处理的部分，其它关于os模块的地方可以去看官方文档。</p>
-<h4 id="1-文件路径os-path"><a href="#1-文件路径os-path" class="headerlink" title="1.文件路径os.path"></a>1.文件路径os.path</h4><h5 id="获取组合路径"><a href="#获取组合路径" class="headerlink" title="获取组合路径"></a>获取组合路径</h5><p><code>os.path.join</code> </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><br>path = os.path.join(<span class="hljs-string">&quot;folder&quot;</span>,<span class="hljs-string">&quot;subfolder&quot;</span>,<span class="hljs-string">&quot;file.ext&quot;</span>)<br><span class="hljs-built_in">print</span>(path) <span class="hljs-comment"># folder\subfolder\file.ext</span><br></code></pre></td></tr></table></figure>
+                <h3 id="call-方法"><a href="#call-方法" class="headerlink" title="__call__方法"></a>__call__方法</h3><p><code>__call__</code>是Python中的一个魔术方法，也称作是类方法。</p>
+<p>它的作用是将类的实例变成可调用对象，类似于函数一样被调用。</p>
+<p><strong><code>__call__</code>使用举例</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyClass</span>：<br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">__call__</span>(<span class="hljs-params">self, x, y</span>):<br>        <span class="hljs-keyword">return</span> x + y<br><br>obj = MyClass()<br><span class="hljs-built_in">print</span>(obj(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>))<br></code></pre></td></tr></table></figure>
 
-<h5 id="获取绝对路径"><a href="#获取绝对路径" class="headerlink" title="获取绝对路径"></a>获取绝对路径</h5><p><code>os.path.abspath</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><br>absolute_path = os.path.abspath(<span class="hljs-string">&quot;file.txt&quot;</span>)<br><span class="hljs-built_in">print</span>(absolute_path)    <span class="hljs-comment"># E:\code\D2L\python_pytorch_based\file.txt</span><br></code></pre></td></tr></table></figure>
+<p><strong>对比于其它类别的使用</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyClass</span>：<br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">self, x, y</span>):<br>        <span class="hljs-keyword">return</span> x + y<br>    <br>obj = MyClass()<br><span class="hljs-built_in">print</span>(obj.add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>))<br></code></pre></td></tr></table></figure>
 
-<h5 id="获取文件的名字"><a href="#获取文件的名字" class="headerlink" title="获取文件的名字"></a>获取文件的名字</h5><p><code>os.path.basename</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">### 获取文件名字</span><br><span class="hljs-keyword">import</span> os<br><br>filename = os.path.basename(<span class="hljs-string">r&quot;E:\code\D2L\python_pytorch_based\file.txt&quot;</span>)<br><span class="hljs-built_in">print</span>(filename) <span class="hljs-comment"># file.txt</span><br></code></pre></td></tr></table></figure>
-
-<h5 id="获取目录的路径"><a href="#获取目录的路径" class="headerlink" title="获取目录的路径"></a>获取目录的路径</h5><p><code>os.path.dirname</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">### 获取目录路径</span><br><span class="hljs-keyword">import</span> os<br><br>directory = os.path.dirname(<span class="hljs-string">r&quot;E:\code\D2L\python_pytorch_based\file.txt&quot;</span>) <br><span class="hljs-built_in">print</span>(directory)    <span class="hljs-comment"># E:\code\D2L\python_pytorch_based</span><br></code></pre></td></tr></table></figure>
-
-<h5 id="文件-文件夹-是否存在"><a href="#文件-文件夹-是否存在" class="headerlink" title="文件&#x2F;文件夹 是否存在"></a>文件&#x2F;文件夹 是否存在</h5><p><code>os.path.exists</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">### 判断文件是否存在</span><br><span class="hljs-keyword">import</span> os<br><br><span class="hljs-keyword">if</span> os.path.exists(<span class="hljs-string">r&quot;E:\code\D2L\python_pytorch_based\file.txt&quot;</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;文件存在&quot;</span>)<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;文件不存在&quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<h5 id="分离文件名和拓展名"><a href="#分离文件名和拓展名" class="headerlink" title="分离文件名和拓展名"></a>分离文件名和拓展名</h5><p><code>os.path.splitext</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">### 分离文件名和扩展名</span><br><span class="hljs-keyword">import</span> os<br><br>filename, extension = os.path.splitext(<span class="hljs-string">r&quot;E:\code\D2L\python_pytorch_based\file.txt&quot;</span>)<br><span class="hljs-built_in">print</span>(filename)    <span class="hljs-comment"># E:\code\D2L\python_pytorch_based\file</span><br><span class="hljs-built_in">print</span>(extension)    <span class="hljs-comment"># .txt</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h4><h5 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h5><ul>
-<li><code>os.mkdir(&quot;test_dir&quot;)</code> 创建单级目录</li>
-<li><code>os.makedirs(&quot;new/second/third&quot;)</code>创建多级目录，存在一个递归创建的操作。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-comment"># 创建目录</span><br><span class="hljs-keyword">import</span> os<br><br>os.mkdir(<span class="hljs-string">&quot;test_dir&quot;</span>)<br>os.makedirs(<span class="hljs-string">&quot;new/second/third&quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<h5 id="删除目录"><a href="#删除目录" class="headerlink" title="删除目录"></a>删除目录</h5><ul>
-<li><code>os.rmdir(&quot;test_dir&quot;)</code> 单独的删除一个目录</li>
-<li><code>os.removedirs(&quot;new/second/third&quot;)</code> 递归删除这些目录</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 删除目录</span><br><span class="hljs-keyword">import</span> os<br><br>os.rmdir(<span class="hljs-string">&quot;test_dir&quot;</span>)<br>os.removedirs(<span class="hljs-string">&quot;new/second/third&quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<h5 id="获取目录内容"><a href="#获取目录内容" class="headerlink" title="获取目录内容"></a>获取目录内容</h5><ul>
-<li><code>os.listdir(&quot;some_dir&quot;)</code>：可以返回指定的这个目录里面存在的子文件和列表</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 获取目录内容</span><br><span class="hljs-keyword">import</span> os<br><br>contents = os.listdir(<span class="hljs-string">&quot;some_dir&quot;</span>)<br><span class="hljs-built_in">print</span>(contents)<br></code></pre></td></tr></table></figure>
-
-<h5 id="判断是否是一个目录"><a href="#判断是否是一个目录" class="headerlink" title="判断是否是一个目录"></a>判断是否是一个目录</h5><ul>
-<li><code>os.path.isdir(&quot;/path/to/folder&quot;)</code>:判断路径是否是同一个目录</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 判断是否在一个目录</span><br><span class="hljs-keyword">import</span> os<br><br><span class="hljs-keyword">if</span> os.path.isdir(<span class="hljs-string">&quot;/path/to/folder&quot;</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;It is a directory!&quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<h5 id="切换当前工作目录"><a href="#切换当前工作目录" class="headerlink" title="切换当前工作目录"></a>切换当前工作目录</h5><ul>
-<li><code>os.chdir(&quot;path/to/folder&quot;)</code>：切换当前的工作目录到指定的路径。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 切换当前的工作目录</span><br><span class="hljs-keyword">import</span> os<br><br>os.chdir(<span class="hljs-string">&quot;path/to/folder&quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<h4 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h4><h5 id="文件重命名"><a href="#文件重命名" class="headerlink" title="文件重命名"></a>文件重命名</h5><ul>
-<li><code>os.rename(&quot;old.txt&quot;, &quot;new.txt&quot;)</code>：重命名文件或者目录</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 文件重命名</span><br><span class="hljs-keyword">import</span> os<br>os.rename(<span class="hljs-string">&quot;old.txt&quot;</span>, <span class="hljs-string">&quot;new.txt&quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<h5 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h5><ul>
-<li><code>os.remove(&quot;test.txt&quot;)</code>：删除文件。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 删除文件</span><br><span class="hljs-keyword">import</span> os<br>os.remove(<span class="hljs-string">&quot;test.txt&quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<h5 id="获取文件信息"><a href="#获取文件信息" class="headerlink" title="获取文件信息"></a>获取文件信息</h5><ul>
-<li><code>os.stat(&quot;ap_l.py&quot;)</code>：返回指定路径的文件信息。（具体哪一个信息对应的含义需要自己去理解一下等等）</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><br>file_info = os.stat(<span class="hljs-string">&quot;ap_l.py&quot;</span>)<br><br><span class="hljs-built_in">print</span>(file_info)    <span class="hljs-comment"># os.stat_result(st_mode=33206, st_ino=1125899906842624, st_dev=4053239664, st_nlink=1, st_uid=0, st_gid=0, st_size=0, st_atime=1615790000, st_mtime=1615790000, st_ctime=1615790000)</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Last modified: <span class="hljs-subst">&#123;file_info.st_mtime&#125;</span>&quot;</span>)   <span class="hljs-comment"># Last modified: 1615790000</span><br></code></pre></td></tr></table></figure>
-
-<h5 id="判断是否是一个文件"><a href="#判断是否是一个文件" class="headerlink" title="判断是否是一个文件"></a>判断是否是一个文件</h5><ul>
-<li><code>os.path.isfile(&quot;file.txt&quot;)</code>：判读路径是否是一个文件。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 是否是一个文件</span><br><span class="hljs-keyword">import</span> os<br><br><span class="hljs-keyword">if</span> os.path.isfile(<span class="hljs-string">&quot;file.txt&quot;</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;It is a file!&quot;</span>)<br></code></pre></td></tr></table></figure>
-
-
-
-
-
+<p>所以<code>__call__</code>可以不用像普通函数那样来书写，直接用类名即可。</p>
 
                 
               </div>
@@ -406,13 +344,6 @@
     
   <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/python%E5%92%8Cpytorch%E5%9F%BA%E7%A1%80/" class="category-chain-item">python和pytorch基础</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/python%E5%92%8Cpytorch%E5%9F%BA%E7%A1%80/%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E5%A4%84%E7%90%86/" class="category-chain-item">文件路径处理</a>
-  
-  
-
   
 
   
@@ -440,8 +371,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>os路径模块</div>
-      <div>http://example.com/2024/04/23/os路径模块/</div>
+      <div>__call__方法</div>
+      <div>http://example.com/2024/04/23/call-方法/</div>
     </div>
     <div class="license-meta">
       
@@ -485,9 +416,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/04/23/call-%E6%96%B9%E6%B3%95/" title="__call__方法">
+                      <a href="/2024/04/23/yaml/" title="yaml">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">__call__方法</span>
+                        <span class="hidden-mobile">yaml</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -495,8 +426,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/22/pathlib%E6%A8%A1%E5%9D%97/" title="pathlib模块">
-                        <span class="hidden-mobile">pathlib模块</span>
+                      <a href="/2024/04/23/os%E8%B7%AF%E5%BE%84%E6%A8%A1%E5%9D%97/" title="os路径模块">
+                        <span class="hidden-mobile">os路径模块</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

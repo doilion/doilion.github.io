@@ -16,22 +16,22 @@
   <meta name="author" content="doilion">
   <meta name="keywords" content="">
   
-    <meta name="description" content="OS模块官方文档 这一部分主要是集中于文件的处理的部分，其它关于os模块的地方可以去看官方文档。 1.文件路径os.path获取组合路径os.path.join  1234import ospath &#x3D; os.path.join(&quot;folder&quot;,&quot;subfolder&quot;,&quot;file.ext&quot;)print(path) # folder\su">
+    <meta name="description" content="YamlYAML：YAML Ain’t Markup Language，也就是说YAML是一种非标记语言。 1.基本语法 大写敏感 使用缩进表示层级关系 缩进不允许使用tab,允许空格(这个要特别注意) 缩进的空格数不重要，只要相同层级的元素左对齐即可  2.数据类型YAML支持以下几种数据类型:  **对象:**键值对的集合，又称为映射(mapping) &#x2F;哈希(hashes) &amp;#x">
 <meta property="og:type" content="article">
-<meta property="og:title" content="os路径模块">
-<meta property="og:url" content="http://example.com/2024/04/23/os%E8%B7%AF%E5%BE%84%E6%A8%A1%E5%9D%97/index.html">
+<meta property="og:title" content="yaml">
+<meta property="og:url" content="http://example.com/2024/04/23/yaml/index.html">
 <meta property="og:site_name" content="doilion blog">
-<meta property="og:description" content="OS模块官方文档 这一部分主要是集中于文件的处理的部分，其它关于os模块的地方可以去看官方文档。 1.文件路径os.path获取组合路径os.path.join  1234import ospath &#x3D; os.path.join(&quot;folder&quot;,&quot;subfolder&quot;,&quot;file.ext&quot;)print(path) # folder\su">
+<meta property="og:description" content="YamlYAML：YAML Ain’t Markup Language，也就是说YAML是一种非标记语言。 1.基本语法 大写敏感 使用缩进表示层级关系 缩进不允许使用tab,允许空格(这个要特别注意) 缩进的空格数不重要，只要相同层级的元素左对齐即可  2.数据类型YAML支持以下几种数据类型:  **对象:**键值对的集合，又称为映射(mapping) &#x2F;哈希(hashes) &amp;#x">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-23T07:31:51.000Z">
-<meta property="article:modified_time" content="2024-04-23T07:32:28.000Z">
+<meta property="article:published_time" content="2024-04-23T08:56:32.000Z">
+<meta property="article:modified_time" content="2024-04-23T08:56:54.000Z">
 <meta property="article:author" content="doilion">
 <meta property="article:tag" content="python基础">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>os路径模块 - doilion blog</title>
+  <title>yaml - doilion blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -226,7 +226,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="os路径模块"></span>
+            <span id="subtitle" data-typed-text="yaml"></span>
           
         </div>
 
@@ -237,7 +237,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-04-23 15:31" pubdate>
+        <time datetime="2024-04-23 16:56" pubdate>
           2024年4月23日 下午
         </time>
       </span>
@@ -249,7 +249,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.6k 字
+          1.9k 字
         
       </span>
     
@@ -260,7 +260,7 @@
         
         
         
-          23 分钟
+          16 分钟
         
       </span>
     
@@ -305,81 +305,67 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">os路径模块</h1>
+            <h1 id="seo-header">yaml</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="OS模块"><a href="#OS模块" class="headerlink" title="OS模块"></a>OS模块</h3><p><a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/os.html">官方文档</a></p>
-<p>这一部分主要是集中于文件的处理的部分，其它关于os模块的地方可以去看官方文档。</p>
-<h4 id="1-文件路径os-path"><a href="#1-文件路径os-path" class="headerlink" title="1.文件路径os.path"></a>1.文件路径os.path</h4><h5 id="获取组合路径"><a href="#获取组合路径" class="headerlink" title="获取组合路径"></a>获取组合路径</h5><p><code>os.path.join</code> </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><br>path = os.path.join(<span class="hljs-string">&quot;folder&quot;</span>,<span class="hljs-string">&quot;subfolder&quot;</span>,<span class="hljs-string">&quot;file.ext&quot;</span>)<br><span class="hljs-built_in">print</span>(path) <span class="hljs-comment"># folder\subfolder\file.ext</span><br></code></pre></td></tr></table></figure>
-
-<h5 id="获取绝对路径"><a href="#获取绝对路径" class="headerlink" title="获取绝对路径"></a>获取绝对路径</h5><p><code>os.path.abspath</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><br>absolute_path = os.path.abspath(<span class="hljs-string">&quot;file.txt&quot;</span>)<br><span class="hljs-built_in">print</span>(absolute_path)    <span class="hljs-comment"># E:\code\D2L\python_pytorch_based\file.txt</span><br></code></pre></td></tr></table></figure>
-
-<h5 id="获取文件的名字"><a href="#获取文件的名字" class="headerlink" title="获取文件的名字"></a>获取文件的名字</h5><p><code>os.path.basename</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">### 获取文件名字</span><br><span class="hljs-keyword">import</span> os<br><br>filename = os.path.basename(<span class="hljs-string">r&quot;E:\code\D2L\python_pytorch_based\file.txt&quot;</span>)<br><span class="hljs-built_in">print</span>(filename) <span class="hljs-comment"># file.txt</span><br></code></pre></td></tr></table></figure>
-
-<h5 id="获取目录的路径"><a href="#获取目录的路径" class="headerlink" title="获取目录的路径"></a>获取目录的路径</h5><p><code>os.path.dirname</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">### 获取目录路径</span><br><span class="hljs-keyword">import</span> os<br><br>directory = os.path.dirname(<span class="hljs-string">r&quot;E:\code\D2L\python_pytorch_based\file.txt&quot;</span>) <br><span class="hljs-built_in">print</span>(directory)    <span class="hljs-comment"># E:\code\D2L\python_pytorch_based</span><br></code></pre></td></tr></table></figure>
-
-<h5 id="文件-文件夹-是否存在"><a href="#文件-文件夹-是否存在" class="headerlink" title="文件&#x2F;文件夹 是否存在"></a>文件&#x2F;文件夹 是否存在</h5><p><code>os.path.exists</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">### 判断文件是否存在</span><br><span class="hljs-keyword">import</span> os<br><br><span class="hljs-keyword">if</span> os.path.exists(<span class="hljs-string">r&quot;E:\code\D2L\python_pytorch_based\file.txt&quot;</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;文件存在&quot;</span>)<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;文件不存在&quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<h5 id="分离文件名和拓展名"><a href="#分离文件名和拓展名" class="headerlink" title="分离文件名和拓展名"></a>分离文件名和拓展名</h5><p><code>os.path.splitext</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">### 分离文件名和扩展名</span><br><span class="hljs-keyword">import</span> os<br><br>filename, extension = os.path.splitext(<span class="hljs-string">r&quot;E:\code\D2L\python_pytorch_based\file.txt&quot;</span>)<br><span class="hljs-built_in">print</span>(filename)    <span class="hljs-comment"># E:\code\D2L\python_pytorch_based\file</span><br><span class="hljs-built_in">print</span>(extension)    <span class="hljs-comment"># .txt</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h4><h5 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h5><ul>
-<li><code>os.mkdir(&quot;test_dir&quot;)</code> 创建单级目录</li>
-<li><code>os.makedirs(&quot;new/second/third&quot;)</code>创建多级目录，存在一个递归创建的操作。</li>
+                <h3 id="Yaml"><a href="#Yaml" class="headerlink" title="Yaml"></a>Yaml</h3><p>YAML：YAML Ain’t Markup Language，也就是说YAML是一种非标记语言。</p>
+<h4 id="1-基本语法"><a href="#1-基本语法" class="headerlink" title="1.基本语法"></a>1.基本语法</h4><ul>
+<li>大写敏感</li>
+<li>使用缩进表示层级关系</li>
+<li>缩进不允许使用tab,允许空格(这个要特别注意)</li>
+<li>缩进的空格数不重要，只要相同层级的元素左对齐即可</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-comment"># 创建目录</span><br><span class="hljs-keyword">import</span> os<br><br>os.mkdir(<span class="hljs-string">&quot;test_dir&quot;</span>)<br>os.makedirs(<span class="hljs-string">&quot;new/second/third&quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<h5 id="删除目录"><a href="#删除目录" class="headerlink" title="删除目录"></a>删除目录</h5><ul>
-<li><code>os.rmdir(&quot;test_dir&quot;)</code> 单独的删除一个目录</li>
-<li><code>os.removedirs(&quot;new/second/third&quot;)</code> 递归删除这些目录</li>
+<h4 id="2-数据类型"><a href="#2-数据类型" class="headerlink" title="2.数据类型"></a>2.数据类型</h4><p>YAML支持以下几种数据类型:</p>
+<ul>
+<li>**对象:**键值对的集合，又称为映射(mapping) &#x2F;哈希(hashes) &#x2F; 字典(dictionary)</li>
+<li><strong>数组:</strong> 一组按次序排列的值，又称为序列(sequence) &#x2F; 列表(list)</li>
+<li>**纯量(scalars) :**单个的、不可再分的值</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 删除目录</span><br><span class="hljs-keyword">import</span> os<br><br>os.rmdir(<span class="hljs-string">&quot;test_dir&quot;</span>)<br>os.removedirs(<span class="hljs-string">&quot;new/second/third&quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<h5 id="获取目录内容"><a href="#获取目录内容" class="headerlink" title="获取目录内容"></a>获取目录内容</h5><ul>
-<li><code>os.listdir(&quot;some_dir&quot;)</code>：可以返回指定的这个目录里面存在的子文件和列表</li>
+<h5 id="（1）对象"><a href="#（1）对象" class="headerlink" title="（1）对象"></a>（1）对象</h5><ul>
+<li>对象键值对使用冒号结构表示<code>key: value</code>冒号后面要加一个空格。</li>
+<li>也可以使用<code>key:&#123;key1: value1, key2: value2， ...&#125;</code></li>
+<li>还可以使用缩进表示层级关系;</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 获取目录内容</span><br><span class="hljs-keyword">import</span> os<br><br>contents = os.listdir(<span class="hljs-string">&quot;some_dir&quot;</span>)<br><span class="hljs-built_in">print</span>(contents)<br></code></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">key:</span><br>    <span class="hljs-attr">child-key1:</span> <span class="hljs-string">value1</span>	<span class="hljs-comment">#冒号后面要加一个空格</span><br>    <span class="hljs-attr">child-key2:</span> <span class="hljs-string">value2</span>	<span class="hljs-comment">#冒号后面要加一一个空格</span><br></code></pre></td></tr></table></figure>
 
-<h5 id="判断是否是一个目录"><a href="#判断是否是一个目录" class="headerlink" title="判断是否是一个目录"></a>判断是否是一个目录</h5><ul>
-<li><code>os.path.isdir(&quot;/path/to/folder&quot;)</code>:判断路径是否是同一个目录</li>
+<h5 id="（2）数组"><a href="#（2）数组" class="headerlink" title="（2）数组"></a>（2）数组</h5><p>以’-‘开头的行表示构成一个数组，如下效果类似于：[A,B,C]</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-bullet">-</span> <span class="hljs-string">A</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">B</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">C</span><br></code></pre></td></tr></table></figure>
+
+<p>YAML支持多维数组，可以使用行内表示</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">key: [value1, value2, value3, ...]<br></code></pre></td></tr></table></figure>
+
+<p>一个相对复杂的例子:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-bullet">-</span> <span class="hljs-attr">companies:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-number">1</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">company1</span><br>    <span class="hljs-attr">price:</span> <span class="hljs-string">200W</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-number">2</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">company2</span><br>    <span class="hljs-attr">price:</span> <span class="hljs-string">500W</span><br></code></pre></td></tr></table></figure>
+
+<p>示companies是一个数组，每一个数组元素又是由id、name、price三个属性构成。 以上也可以使用流式(flow)的方式表示:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">companies: [&#123;<span class="hljs-built_in">id</span>: <span class="hljs-number">1</span>, name: company1, price: 200W&#125;, &#123;<span class="hljs-built_in">id</span>: <span class="hljs-number">2</span>, name: company2, price: 500W&#125;]<br></code></pre></td></tr></table></figure>
+
+<h4 id="（3）常量"><a href="#（3）常量" class="headerlink" title="（3）常量"></a>（3）常量</h4><p>纯是最基本的，补可再分的值，包括:</p>
+<ul>
+<li>字符串</li>
+<li>布尔值</li>
+<li>整数</li>
+<li>浮点数</li>
+<li>NULL</li>
+<li>时间</li>
+<li>日期</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 判断是否在一个目录</span><br><span class="hljs-keyword">import</span> os<br><br><span class="hljs-keyword">if</span> os.path.isdir(<span class="hljs-string">&quot;/path/to/folder&quot;</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;It is a directory!&quot;</span>)<br></code></pre></td></tr></table></figure>
+<p>举例</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">boolean:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-literal">TRUE</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-literal">FALSE</span><br><span class="hljs-attr">float:</span><br>	<span class="hljs-bullet">-</span> <span class="hljs-number">3.14</span><br>	<span class="hljs-bullet">-</span> <span class="hljs-number">6.825146e+5</span><br><span class="hljs-attr">int:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-number">123</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">ob1010_0111_1110_1010</span><br><span class="hljs-attr">null:</span><br>    <span class="hljs-attr">nodeName:</span> <span class="hljs-string">&#x27;node&#x27;</span><br>    <span class="hljs-attr">parent:</span> <span class="hljs-string">~</span> <span class="hljs-comment"># 使用~来表示null</span><br><span class="hljs-attr">string:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">myname</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;Hello world&#x27;</span>	<span class="hljs-comment"># 可以使用双引号或者单引号来包裹特殊字符</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">newline1</span><br>      <span class="hljs-string">newline2</span> <span class="hljs-comment"># 字符串可以拆成多行，每一行都会被转换成一个空格</span><br><span class="hljs-attr">date:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-number">2018-02-17</span>  <span class="hljs-comment">#日期必须遵循ISO 8601格式，即yyyy-MM-dd</span><br><span class="hljs-attr">datetime:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-number">2018-02-17T15:02:31+08:00</span>  <span class="hljs-comment">#时间也遵循ISO 8601格式，时间和日期之间使用T隔开，后面跟时区信息+</span><br></code></pre></td></tr></table></figure>
 
-<h5 id="切换当前工作目录"><a href="#切换当前工作目录" class="headerlink" title="切换当前工作目录"></a>切换当前工作目录</h5><ul>
-<li><code>os.chdir(&quot;path/to/folder&quot;)</code>：切换当前的工作目录到指定的路径。</li>
+<h4 id="4-yaml文件读取"><a href="#4-yaml文件读取" class="headerlink" title="4.yaml文件读取"></a>4.yaml文件读取</h4><p>想要读取yaml，首先需要安装对应的yaml包： <code>pip install pyyaml</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> yaml  <span class="hljs-comment"># 导入yaml模块</span><br><br><span class="hljs-comment"># 读取YAML文件</span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;example.yaml&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> file:  <span class="hljs-comment"># 打开文件</span><br>    <span class="hljs-comment"># 使用yaml的safe_load方法加载文件内容</span><br>    data = yaml.safe_load(file)<br><br><span class="hljs-comment"># 打印读取的数据</span><br><span class="hljs-built_in">print</span>(data)  <span class="hljs-comment"># 显示数据内容</span><br></code></pre></td></tr></table></figure>
+
+<p>在这个脚本中：</p>
+<ul>
+<li>第1行：我们导入了<code>yaml</code>模块，这样才能处理YAML文件。</li>
+<li>第4行：使用<code>with</code>语句打开<code>example.yaml</code>文件，并将其作为只读模式(<code>&quot;r&quot;</code>)打开。<code>encoding=&#39;utf-8&#39;</code>确保正确读取中文字符。</li>
+<li>第6行：我们使用<code>yaml.safe_load()</code>函数读取文件内容，并将其转换为Python的数据结构（例如，字典或列表，取决于YAML文件的内容）。</li>
+<li>第8行：最后，我们打印出从YAML文件中读取的数据。</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 切换当前的工作目录</span><br><span class="hljs-keyword">import</span> os<br><br>os.chdir(<span class="hljs-string">&quot;path/to/folder&quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<h4 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h4><h5 id="文件重命名"><a href="#文件重命名" class="headerlink" title="文件重命名"></a>文件重命名</h5><ul>
-<li><code>os.rename(&quot;old.txt&quot;, &quot;new.txt&quot;)</code>：重命名文件或者目录</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 文件重命名</span><br><span class="hljs-keyword">import</span> os<br>os.rename(<span class="hljs-string">&quot;old.txt&quot;</span>, <span class="hljs-string">&quot;new.txt&quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<h5 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h5><ul>
-<li><code>os.remove(&quot;test.txt&quot;)</code>：删除文件。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 删除文件</span><br><span class="hljs-keyword">import</span> os<br>os.remove(<span class="hljs-string">&quot;test.txt&quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<h5 id="获取文件信息"><a href="#获取文件信息" class="headerlink" title="获取文件信息"></a>获取文件信息</h5><ul>
-<li><code>os.stat(&quot;ap_l.py&quot;)</code>：返回指定路径的文件信息。（具体哪一个信息对应的含义需要自己去理解一下等等）</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><br>file_info = os.stat(<span class="hljs-string">&quot;ap_l.py&quot;</span>)<br><br><span class="hljs-built_in">print</span>(file_info)    <span class="hljs-comment"># os.stat_result(st_mode=33206, st_ino=1125899906842624, st_dev=4053239664, st_nlink=1, st_uid=0, st_gid=0, st_size=0, st_atime=1615790000, st_mtime=1615790000, st_ctime=1615790000)</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Last modified: <span class="hljs-subst">&#123;file_info.st_mtime&#125;</span>&quot;</span>)   <span class="hljs-comment"># Last modified: 1615790000</span><br></code></pre></td></tr></table></figure>
-
-<h5 id="判断是否是一个文件"><a href="#判断是否是一个文件" class="headerlink" title="判断是否是一个文件"></a>判断是否是一个文件</h5><ul>
-<li><code>os.path.isfile(&quot;file.txt&quot;)</code>：判读路径是否是一个文件。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 是否是一个文件</span><br><span class="hljs-keyword">import</span> os<br><br><span class="hljs-keyword">if</span> os.path.isfile(<span class="hljs-string">&quot;file.txt&quot;</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;It is a file!&quot;</span>)<br></code></pre></td></tr></table></figure>
-
-
-
-
+<h4 id="5-yaml文件写入"><a href="#5-yaml文件写入" class="headerlink" title="5.yaml文件写入"></a>5.yaml文件写入</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> yaml <br><br>data = &#123;<span class="hljs-string">&#x27;name&#x27;</span>:[<span class="hljs-string">&#x27;john&#x27;</span>, <span class="hljs-string">&#x27;Tom&#x27;</span>], <span class="hljs-string">&#x27;age&#x27;</span>:[<span class="hljs-number">30</span>, <span class="hljs-number">25</span>]&#125;<br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;./example.yaml&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>) <span class="hljs-keyword">as</span> f:<br>    yaml.safe_dump(&#123;k: v <span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">in</span> data.items()&#125;, f)<br></code></pre></td></tr></table></figure>
 
 
                 
@@ -407,13 +393,6 @@
   <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/python%E5%92%8Cpytorch%E5%9F%BA%E7%A1%80/" class="category-chain-item">python和pytorch基础</a>
   
   
-    <span>></span>
-    
-  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/python%E5%92%8Cpytorch%E5%9F%BA%E7%A1%80/%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E5%A4%84%E7%90%86/" class="category-chain-item">文件路径处理</a>
-  
-  
-
-  
 
   
 
@@ -440,8 +419,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>os路径模块</div>
-      <div>http://example.com/2024/04/23/os路径模块/</div>
+      <div>yaml</div>
+      <div>http://example.com/2024/04/23/yaml/</div>
     </div>
     <div class="license-meta">
       
@@ -485,18 +464,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/04/23/call-%E6%96%B9%E6%B3%95/" title="__call__方法">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">__call__方法</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/22/pathlib%E6%A8%A1%E5%9D%97/" title="pathlib模块">
-                        <span class="hidden-mobile">pathlib模块</span>
+                      <a href="/2024/04/23/call-%E6%96%B9%E6%B3%95/" title="__call__方法">
+                        <span class="hidden-mobile">__call__方法</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
