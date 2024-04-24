@@ -1,0 +1,776 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="doilion">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="自动求导 Autograd在神经网络中，一个重要内容就是进行参数学习，而参数学习离不开求导。现在大部分深度学习架构都有自动求导的功能，torch.autograd包 就是用来自动求导的。torch.autograd 包为张量上所有的操作 提供了自动求导功能  1.计算图在整个前向计算过程中，PyTorch采用 动态计算图 的形式进行组织，且在每次 前向传播时重新构建。其他深度学习架构，如Tenso">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自动求导">
+<meta property="og:url" content="http://example.com/2024/04/23/%E8%87%AA%E5%8A%A8%E6%B1%82%E5%AF%BC/index.html">
+<meta property="og:site_name" content="doilion blog">
+<meta property="og:description" content="自动求导 Autograd在神经网络中，一个重要内容就是进行参数学习，而参数学习离不开求导。现在大部分深度学习架构都有自动求导的功能，torch.autograd包 就是用来自动求导的。torch.autograd 包为张量上所有的操作 提供了自动求导功能  1.计算图在整个前向计算过程中，PyTorch采用 动态计算图 的形式进行组织，且在每次 前向传播时重新构建。其他深度学习架构，如Tenso">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://doilion-issex.oss-cn-beijing.aliyuncs.com/img/20240423193752.png">
+<meta property="og:image" content="c:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20240423195217775.png">
+<meta property="og:image" content="https://doilion-issex.oss-cn-beijing.aliyuncs.com/img/20240423223533.png">
+<meta property="article:published_time" content="2024-04-23T11:34:14.000Z">
+<meta property="article:modified_time" content="2024-04-23T14:43:48.000Z">
+<meta property="article:author" content="doilion">
+<meta property="article:tag" content="pytorch">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://doilion-issex.oss-cn-beijing.aliyuncs.com/img/20240423193752.png">
+  
+  
+  
+  <title>自动求导 - doilion blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"mN4XQ0a7v2WAqtJraHLMT3L6-gzGzoHsz","app_key":"LCmlbFLHCZpAsjTzOUsfhTvJ","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>doilion&#39;s note</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="自动求导"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-04-23 19:34" pubdate>
+          2024年4月23日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          37 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">自动求导</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="自动求导-Autograd"><a href="#自动求导-Autograd" class="headerlink" title="自动求导 Autograd"></a>自动求导 Autograd</h2><p>在神经网络中，一个重要内容就是进行<strong>参数学习</strong>，而参数学习离不开<strong>求导</strong>。<br>现在大部分深度学习架构都有自动求导的功能，torch.autograd包 就是用来自动求导的。<br>torch.autograd 包为张量上<strong>所有的操作</strong> 提供了<strong>自动求导</strong>功能</p>
+<hr>
+<h4 id="1-计算图"><a href="#1-计算图" class="headerlink" title="1.计算图"></a>1.计算图</h4><p>在整个前向计算过程中，PyTorch采用 动态计算图 的形式进行组织，且在每次 前向传播时重新构建。其他深度学习架构，如TensorFlow、Keras 一般为静态图。</p>
+<img src="https://doilion-issex.oss-cn-beijing.aliyuncs.com/img/20240423193752.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;" />
+
+<ul>
+<li>上面的计算图中，圆形表示<strong>变量</strong>，矩阵表示算子，这些变量及算子就构成了一个完整的前向传播过程</li>
+<li>计算图是一种有<strong>向无环图</strong>，用<strong>图形方式来表示算子与变量之间的关系</strong>，直观高效</li>
+</ul>
+<p>对于上面的图片可以组织成类似于这样子的表达：</p>
+<ol>
+<li><strong>叶子节点</strong> ： x、w、b 为叶子节点，它们是用户创建的变量，不依赖于其他变量</li>
+<li><strong>非叶子节点</strong> ： y、z为非叶子节点，它们是通过计算得到的变量</li>
+<li><strong>根节点</strong> ：  z为根节点，它之后不会再有后续的运算，我们一般让根节点来执行 反向传播 .backward()</li>
+</ol>
+<h4 id="2-反向传播"><a href="#2-反向传播" class="headerlink" title="2.反向传播"></a>2.反向传播</h4><p>1）叶子节点（Leaf Node）的 Tensor，需要用 requires_grad 指定是否记录对其的操作&#x2F;运算，以便之后通过反向传播求梯度。</p>
+<ul>
+<li>子结点如果需要求导，requires_grad 需设置为 True，然后与之有依赖关系的非叶子结点，requires_grad 会自动置为True（一般网络中的参数 为 torch.nn.Parameter 对象，requires_grad属性默认为 True torch.nn.Parameter 与 torch.Tensor） </li>
+<li>自动求导只会求叶子结点的梯度，不会求非叶子结点的梯度。确切的来说，非叶子结点的梯度值 只作为求叶子结点梯度 的过程值（非叶子结点 链式求导中的过程值），它并不会被记录下来。 因为非叶子结点的值是计算出来的，是不需要被更新的，所以不需要记录它们的梯度</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch<br><br><span class="hljs-comment"># 创建两个张量作为叶子节点，并设置 requires_grad=True</span><br>x = torch.tensor([<span class="hljs-number">2.0</span>], requires_grad=<span class="hljs-literal">True</span>)<br>y = torch.tensor([<span class="hljs-number">3.0</span>], requires_grad=<span class="hljs-literal">True</span>)<br><br><span class="hljs-comment"># 创建一个计算图，包括叶子节点和非叶子节点</span><br>z = x * y  <span class="hljs-comment"># 非叶子节点</span><br>w = z + torch.tensor([<span class="hljs-number">1.0</span>])  <span class="hljs-comment"># 非叶子节点</span><br><br><span class="hljs-comment"># 查看叶子节点和非叶子节点的 requires_grad 属性</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;x 的 requires_grad 属性:&#x27;</span>, x.requires_grad)​<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;y 的 requires_grad 属性:&#x27;</span>, y.requires_grad)​<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;z 的 requires_grad 属性:&#x27;</span>, z.requires_grad)​<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;w 的 requires_grad 属性:&#x27;</span>, w.requires_grad)​<br><br><span class="hljs-comment"># 对 w 进行反向传播</span><br>w.backward()<br><br><span class="hljs-comment"># 查看叶子节点和非叶子节点的梯度</span><br><span class="hljs-comment"># pytorch这里设计了只保持叶子结点的梯度，如果需要这种计算中间的需要w.retain_grad()</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;x 的梯度:&#x27;</span>, x.grad)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;y 的梯度:&#x27;</span>, y.grad)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;z 的梯度:&#x27;</span>, z.grad)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;w 的梯度:&#x27;</span>, w.grad)<br></code></pre></td></tr></table></figure>
+
+<img src="C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20240423195217775.png" srcset="/img/loading.gif" lazyload alt="image-20240423195217775" style="zoom:67%;" />
+
+<p>通过运算创建的 非叶子节点 tensor，会自动被赋予 grad_fn 属性。该属性表示梯度函数。叶子节点的 grad_fn 为 None。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch<br><br><span class="hljs-comment"># 创建叶子节点张量</span><br>x = torch.tensor([<span class="hljs-number">2.0</span>], requires_grad=<span class="hljs-literal">True</span>)<br>y = torch.tensor([<span class="hljs-number">3.0</span>], requires_grad=<span class="hljs-literal">True</span>)<br><br><span class="hljs-comment"># 创建非叶子节点张量，通过运算生成</span><br>z = x * y<br><br><span class="hljs-comment"># 查看叶子节点和非叶子节点的 grad_fn 属性</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;x 的 grad_fn:&#x27;</span>, x.grad_fn) <br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;y 的 grad_fn:&#x27;</span>, y.grad_fn)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;z 的 grad_fn:&#x27;</span>, z.grad_fn)<br></code></pre></td></tr></table></figure>
+
+<p>如下例子中，根节点 tensor 就是 loss，我们会让 loss 执行反向传播，一般执行步骤如下：</p>
+<ul>
+<li>通过 optimizer.zero_grad() 清空叶子节点的梯度，否则，多次调用 optimizer.step() ，叶子节点梯度会进行累加。 </li>
+<li>调用 loss.backward() 方法，计算每一个叶子节点的梯度 ，并存储在它们各自的 .grad 属性中</li>
+<li>调用 optimizer.step() ，会根据优化器设置的具体算法和学习率，利用存储在叶子节点的 .grad 属性中的梯度，来更新叶子节点（即模型的参数）</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> epoch <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(epochs):<br>    model.train()<br>    <span class="hljs-keyword">for</span> imgs, labels <span class="hljs-keyword">in</span> train_loader:<br>        <span class="hljs-comment"># train</span><br>        optimizer.zero_grad()	<span class="hljs-comment"># 清空叶子节点的梯度</span><br>        loss.backward()			<span class="hljs-comment"># 计算叶子节点的梯度</span><br>        optimizer.step()		<span class="hljs-comment"># 更新参数</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>代码举例</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch<br><br><span class="hljs-comment"># 输入张量 x， require_grad 属性默认为 False</span><br>x = torch.Tensor([<span class="hljs-number">2</span>])<br><br><span class="hljs-comment"># 初始化 权重参数w, 偏移量b，并设置 require_grad 属性为 True, 为自动求导</span><br>w = torch.randn(<span class="hljs-number">1</span>, requires_grad=<span class="hljs-literal">True</span>)<br>b = torch.randn(<span class="hljs-number">1</span>, requires_grad=<span class="hljs-literal">True</span>)<br><br><span class="hljs-comment"># 实现向前传播</span><br>y = torch.mul(w, x)<br>z = torch.add(y, b)<br><br><span class="hljs-comment"># 分别查看叶子节点 x, w, b 和 非叶子节点 y、z 的require_grad属性</span><br><span class="hljs-built_in">print</span>(x.requires_grad, w.requires_grad, b.requires_grad)  <span class="hljs-comment"># False True True</span><br><span class="hljs-built_in">print</span>(y.requires_grad, z.requires_grad )  <span class="hljs-comment"># True True</span><br><br><span class="hljs-comment"># 查看各节点是否为叶子节点</span><br><span class="hljs-built_in">print</span>(x.is_leaf, w.is_leaf, b.is_leaf, y.is_leaf, z.is_leaf)  <span class="hljs-comment"># True True True False False</span><br><br><span class="hljs-comment"># 分别查看 叶子节点 和 非叶子节点 的 grad_fn 属性</span><br><span class="hljs-built_in">print</span>(x.grad_fn, w.grad_fn, b.grad_fn)   <span class="hljs-comment"># None None None</span><br><span class="hljs-built_in">print</span>(y.grad_fn, z.grad_fn)   <span class="hljs-comment"># &lt;MulBackward0 object at 0x7f8ac1303910&gt; &lt;AddBackward0 object at 0x7f8ac1303070&gt;</span><br><br><span class="hljs-comment"># 反向传播计算梯度</span><br>z.backward()  <br><br><span class="hljs-comment"># 查看叶子节点的梯度，x是叶子节点但它无须求导，故其梯度为None </span><br><span class="hljs-built_in">print</span>(w.grad,b.grad,x.grad)  <span class="hljs-comment"># tensor([2.]) tensor([1.]) None</span><br><br><span class="hljs-comment"># 非叶子节点的梯度，执行backward之后，会自动清空 </span><br><span class="hljs-built_in">print</span>(y.grad,z.grad)  <span class="hljs-comment"># None None</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="3-autograde例子"><a href="#3-autograde例子" class="headerlink" title="3.autograde例子"></a>3.autograde例子</h4><p>以下代码实现 ： 机器学习回归问题举例，使用backward()反向传播自动求导，并手动更新参数</p>
+<p><strong>1）先来造一批数据，作为样本数据 x 和标签值y</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><br>torch.manual_seed(<span class="hljs-number">100</span>)<br><br><span class="hljs-comment"># 生成 x坐标数据，形状为 100 x 1</span><br>x = torch.unsqueeze(torch.linspace(-<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">100</span>), dim=<span class="hljs-number">1</span>)<br><br><span class="hljs-comment"># 生成 y坐标数据，，形状为 100 x 1，加上一些噪声</span><br>y = <span class="hljs-number">3</span> * x.<span class="hljs-built_in">pow</span>(<span class="hljs-number">2</span>) + <span class="hljs-number">2</span> + <span class="hljs-number">0.2</span> * torch.rand(x.size())<br><br><span class="hljs-comment"># 把tensor数据转换为numpy数据，并可视化</span><br>plt.scatter(x.numpy(), y.numpy())<br>plt.show()<br></code></pre></td></tr></table></figure>
+
+<p><strong>2）定义一个模型 y &#x3D; wx +b, 我们要学习出 w 和 b 的值，用来拟合 x 和 y</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 初始化权重参数，参数 w、b 为需要学习的，故需要设置参数 requires_grad=True</span><br>w = torch.randn(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, dtype=torch.<span class="hljs-built_in">float</span>, requires_grad=<span class="hljs-literal">True</span>)<br>b = torch.zeros(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, dtype=torch.<span class="hljs-built_in">float</span>, requires_grad=<span class="hljs-literal">True</span>)<br><span class="hljs-built_in">print</span>(w)  <span class="hljs-comment"># tensor([[1.1046]], requires_grad=True)</span><br><span class="hljs-built_in">print</span>(b)  <span class="hljs-comment"># tensor([[0.]], requires_grad=True)</span><br><br>lr = <span class="hljs-number">0.001</span> <span class="hljs-comment"># 学习率</span><br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">800</span>):<br>    <span class="hljs-comment"># 向前传播，得到预测的y值，记为 y_pred</span><br>    y_pred = w * x.<span class="hljs-built_in">pow</span>(<span class="hljs-number">2</span>) + b<br>    <br>    <span class="hljs-comment"># 定义损失函数</span><br>    loss = (y - y_pred) ** <span class="hljs-number">2</span><br>    loss = loss.<span class="hljs-built_in">sum</span>()<br>    <br>    <span class="hljs-comment"># 反向传播，自动计算梯度，存放在 grad 属性中</span><br>    loss.backward()<br>    <br>    <span class="hljs-comment"># 手动更新参数，需要用torch.no_grad(), 使上下文环境中切断自动求导的计算</span><br>    <span class="hljs-keyword">with</span> torch.no_grad():<br>        <span class="hljs-comment"># 更新参数</span><br>        w -= lr * w.grad<br>        b -= lr * b.grad<br>        <span class="hljs-comment"># 梯度清零</span><br>        w.grad.zero_()<br>        b.grad.zero_()<br>        <br><span class="hljs-built_in">print</span>(w)  <span class="hljs-comment"># tensor([[2.9668]], requires_grad=True)</span><br><span class="hljs-built_in">print</span>(b)  <span class="hljs-comment"># tensor([[2.1138]], requires_grad=True)</span><br></code></pre></td></tr></table></figure>
+
+<p>3）可视化一下，红色曲线是预测结果 ，蓝色点是真实值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">plt.plot(x.numpy(), y_pred.detach().numpy(),<span class="hljs-string">&#x27;r-&#x27;</span>,label=<span class="hljs-string">&#x27;predict&#x27;</span>)<span class="hljs-comment">#predict </span><br>plt.scatter(x.numpy(), y.numpy(),color=<span class="hljs-string">&#x27;blue&#x27;</span>,marker=<span class="hljs-string">&#x27;o&#x27;</span>,label=<span class="hljs-string">&#x27;true&#x27;</span>) <span class="hljs-comment"># true data </span><br>plt.xlim(-<span class="hljs-number">1</span>,<span class="hljs-number">1</span>) <br>plt.ylim(<span class="hljs-number">2</span>,<span class="hljs-number">6</span>) <br>plt.legend() <br>plt.show()<br></code></pre></td></tr></table></figure>
+
+<img src="https://doilion-issex.oss-cn-beijing.aliyuncs.com/img/20240423223533.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="category-chain-item">深度学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/python%E5%92%8Cpytorch%E5%9F%BA%E7%A1%80/" class="category-chain-item">python和pytorch基础</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/pytorch/" class="print-no-link">#pytorch</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>自动求导</div>
+      <div>http://example.com/2024/04/23/自动求导/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>doilion</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年4月23日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/04/24/matplotlib%E6%A8%A1%E5%9D%97/" title="matplotlib模块">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">matplotlib模块</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/04/23/%E8%AE%A1%E7%AE%97%E5%9B%BE/" title="计算图">
+                        <span class="hidden-mobile">计算图</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"mN4XQ0a7v2WAqtJraHLMT3L6-gzGzoHsz","appKey":"LCmlbFLHCZpAsjTzOUsfhTvJ","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
