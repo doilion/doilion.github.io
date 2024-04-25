@@ -4,6 +4,58 @@
   
   
   <entry>
+    <title>名词解释</title>
+    <link href="/2024/04/25/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/"/>
+    <url>/2024/04/25/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/</url>
+    
+    <content type="html"><![CDATA[<h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><h4 id="FFN"><a href="#FFN" class="headerlink" title="FFN"></a>FFN</h4><p>FFN（Feedforward Neural Network）：前馈神经网络，是一种基本的神经网络架构，也称为多层感知器（Multilayer Perceptron，MLP）。FFN 一般主要包括多个全连接层（FC）的网络，其中全连接层间可以包含激活层、BN层、Dropout 层。</p><h4 id="MLP-与-FFN-的区别"><a href="#MLP-与-FFN-的区别" class="headerlink" title="MLP 与 FFN 的区别"></a>MLP 与 FFN 的区别</h4><p>在机器学习和深度学习中，MLP（多层感知机）和 FFN（前馈神经网络）在很大程度上可以视为同义词，都指代了一个具有多个层的前馈神经网络结构。</p><ul><li>MLP（多层感知机）更偏向于表达网络结构（多个全连接层）。</li><li>FFN（前馈神经网络）更偏向于表达数据以前馈的方式流动。</li></ul><p>MLP 和 FFN 通常指的是只包含全连接层和激活函数的神经网络结构。这两者都是基本的前馈神经网络类型，没有包含卷积层或其他复杂的结构。</p><h4 id="Logit"><a href="#Logit" class="headerlink" title="Logit"></a>Logit</h4><p>“Logit” 通常指的是神经网络中最后一个隐藏层的输出，经过激活函数之前的值。比如：</p><ul><li>对于二分类问题，logit 是指网络输出的未经过 sigmoid 函数处理的值。</li><li>对于多分类问题，logit 是指网络输出的未经过 softmax 函数处理的值。</li></ul><h4 id="NLL"><a href="#NLL" class="headerlink" title="NLL"></a>NLL</h4><p>NLL 是 Negative Log-Likelihood（负对数似然）的缩写。在深度学习中，特别是在分类问题中，NLL 经常与交叉熵损失（Cross-Entropy Loss）等价使用。</p><h4 id="Anchor-Box-与-Anchor-Point"><a href="#Anchor-Box-与-Anchor-Point" class="headerlink" title="Anchor Box 与 Anchor Point"></a>Anchor Box 与 Anchor Point</h4><ul><li>Anchor box 通常表示一个包含位置和大小信息的四元组 (x, y, w, h)，而 Anchor point 通常表示一个二元组 (x, y)。其中，x 和 y 表示框的中心坐标，w 和 h 表示框的宽度和高度。</li><li>Anchor box 是目标检测中用于定义目标位置和大小的一种方式。而 Anchor point 主要用于在图像上生成 anchor box 的位置，生成的 anchor box 会在 anchor point 的周围不同尺寸和宽高比的情况下进行缩放，形成一系列不同形状的框。</li></ul><h4 id="Parameter-Efficient"><a href="#Parameter-Efficient" class="headerlink" title="Parameter Efficient"></a>Parameter Efficient</h4><p>参数效率高，指的是网络在达到良好性能的同时所使用的参数数量较少。</p><h4 id="Deep-Supervision"><a href="#Deep-Supervision" class="headerlink" title="Deep Supervision"></a>Deep Supervision</h4><p>Deep Supervision 是一种训练策略，旨在提高网络的梯度流动，并促使网络更快地收敛，并且有助于缓解梯度消失问题。Deep Supervision 的核心思想是在网络的不同层中引入额外的监督信号，而不仅仅在最后一层输出进行监督训练。具体来说：Deep Supervision 会使用网络的中间层输出，计算出一部分损失函数，然后和网络最后一层的损失函数一起，对网络的参数进行优化。</p><h4 id="DDP"><a href="#DDP" class="headerlink" title="DDP"></a>DDP</h4><p>“DDP” 通常指的是 Distributed Data Parallelism，即分布式数据并行。</p><hr><h3 id="感受野"><a href="#感受野" class="headerlink" title="感受野"></a>感受野</h3><p>讲解视频  <a href="https://pan.baidu.com/s/1ul2jZYQVxaO0uvwn7LOZbA?pwd=755i">https://pan.baidu.com/s/1ul2jZYQVxaO0uvwn7LOZbA?pwd=755i</a>   提取码: 755i</p><h4 id="1、介绍"><a href="#1、介绍" class="headerlink" title="1、介绍"></a>1、介绍</h4><p>感受野（receptive field）是卷积神经网络输出特征图上的<code>像素点在原始图像上所能看到的（映射的）区域的大小</code>，它决定了该像素对输入图像的感知范围（获取信息的范围）。较小的感受野可以捕捉到更细节的特征，而较大的感受野可以捕捉到更全局的特征。</p><img src="https://doilion-issex.oss-cn-beijing.aliyuncs.com/img/20240425195851.png" style="zoom:67%;" /><p>如果连续进行 2次卷积操作，卷积核大小都为 3x3，stride&#x3D;1， padding&#x3D;0， 如下图，layer3上的每一个像素点在 layer1上的感受野为 5x5</p><img src="C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20240425195935637.png" alt="image-20240425195935637" style="zoom:67%;" /><h4 id="2、感受野计算公式"><a href="#2、感受野计算公式" class="headerlink" title="2、感受野计算公式"></a>2、感受野计算公式</h4><p>感受野计算公式：</p><p>$$<br>F(i) &#x3D; (F(i+1) - 1) \times \text{Stride} + \text{Ksize}<br>$$</p><p>或</p><p>$$<br>F_{in} &#x3D; (F_{out} - 1) \times \text{Stride} + \text{Ksize}<br>$$</p><p>其中：</p><ul><li>$ F(i) $：在第 $ i $ 层的感受野</li><li>Stride：第 $ i $ 层的步距</li><li>Ksize：第 $ i $ 层卷积或池化的 kernel size</li></ul><h4 id="3、计算举例"><a href="#3、计算举例" class="headerlink" title="3、计算举例"></a>3、计算举例</h4><p><strong>求 ：layer3 上的每个像素在 layer1 上的感受野</strong></p><img src="C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20240425201238175.png" alt="image-20240425201238175" style="zoom:67%;" /><ol><li><p>计算 layer3 上的一个像素（$F(3)&#x3D;1$）在 layer2 上的感受野：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">F(2) = (F(3) - 1) × Stride + Ksize = (1 - 1) × 2 + 2 = 2<br></code></pre></td></tr></table></figure></li><li><p>计算 layer3 上的一个像素（$F(3)&#x3D;1$，$F(2)&#x3D;2$）在 layer1 上的感受野：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">F(1) = (F(2) - 1) × Stride + Ksize = (2 - 1) × 2 + 3 = 5<br></code></pre></td></tr></table></figure><p>如果仅计算 layer2 上的一个像素（$F(2)&#x3D;1$）在 layer1 上的感受野：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">F(1) = (F(2) - 1) × Stride + Ksize = (1 - 1) × 2 + 3 = 3<br></code></pre></td></tr></table></figure></li></ol><h4 id="4、延伸-：-膨胀卷积-空洞卷积的感受野"><a href="#4、延伸-：-膨胀卷积-空洞卷积的感受野" class="headerlink" title="4、延伸 ： 膨胀卷积 &#x2F; 空洞卷积的感受野"></a>4、延伸 ： 膨胀卷积 &#x2F; 空洞卷积的感受野</h4><p>下面这个写的比较简单 卷积有很多种 建议每一种都去了解一下</p><img src="C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20240425201652595.png" alt="image-20240425201652595" style="zoom:67%;" />]]></content>
+    
+    
+    <categories>
+      
+      <category>深度学习</category>
+      
+      <category>名词解释</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>深度学习基础</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>C++-算法基础模板（三）</title>
+    <link href="/2024/04/24/C-%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E6%A8%A1%E6%9D%BF%EF%BC%88%E4%B8%89%EF%BC%89/"/>
+    <url>/2024/04/24/C-%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E6%A8%A1%E6%9D%BF%EF%BC%88%E4%B8%89%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<h1 id="常用代码模板3——搜索与图论"><a href="#常用代码模板3——搜索与图论" class="headerlink" title="常用代码模板3——搜索与图论"></a>常用代码模板3——搜索与图论</h1><h2 id="树与图的存储"><a href="#树与图的存储" class="headerlink" title="树与图的存储"></a>树与图的存储</h2><p>树是一种特殊的图，与图的存储方式相同。<br>对于无向图中的边ab，存储两条有向边a-&gt;b, b-&gt;a。<br>因此我们可以只考虑有向图的存储。</p><p>(1) 邻接矩阵：<code>g[a][b]</code> 存储边a-&gt;b</p><p>(2) 邻接表：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">// 对于每一个点k，开一个单链表，存储k所有可以走到的点。h[k]存储这个单链表的头结点</span><br><span class="hljs-type">int</span> h[N], e[N], ne[N], idx;<br><br><span class="hljs-comment">// 添加一条边 a -&gt; b</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span></span><br><span class="hljs-function"></span>&#123;<br>    e[idx] = b, ne[idx] = h[a], h[a] = idx ++;<br>&#125;<br><br><span class="hljs-comment">// 初始化</span><br>idx = <span class="hljs-number">9</span>;<br><span class="hljs-built_in">memset</span>(h, <span class="hljs-number">-1</span>, <span class="hljs-keyword">sizeof</span> h);<br></code></pre></td></tr></table></figure><hr><h2 id="树与图的遍历"><a href="#树与图的遍历" class="headerlink" title="树与图的遍历"></a>树与图的遍历</h2><p><strong>时间复杂度O(n + m)， n表示点数， m表示边数。</strong></p><h3 id="1-深度优先遍历"><a href="#1-深度优先遍历" class="headerlink" title="(1) 深度优先遍历"></a>(1) 深度优先遍历</h3><p>对应的模板题-<a href="https://www.acwing.com/problem/content/description/848/">846. 树的重心 - AcWing题库</a></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">int</span> dfs(<span class="hljs-built_in">int</span> u)<br>&#123;<br>    st[u] = true; // st[u] 表示点u已经被遍历过了<br><br>    <span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> i = h[u];i != -<span class="hljs-number">1</span>;i = ne[i])<br>    &#123;<br>       <span class="hljs-built_in">int</span> j = e[i];<br>        <span class="hljs-keyword">if</span>(!st[j]) dfs[j];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><h3 id="2-宽度优先遍历"><a href="#2-宽度优先遍历" class="headerlink" title="(2) 宽度优先遍历"></a>(2) 宽度优先遍历</h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>模板</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>输出样式设置</title>
     <link href="/2024/04/24/%E8%BE%93%E5%87%BA%E6%A0%B7%E5%BC%8F%E8%AE%BE%E7%BD%AE/"/>
     <url>/2024/04/24/%E8%BE%93%E5%87%BA%E6%A0%B7%E5%BC%8F%E8%AE%BE%E7%BD%AE/</url>
