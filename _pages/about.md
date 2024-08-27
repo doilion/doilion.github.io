@@ -11,7 +11,7 @@ My name is Wenjie Li, and I am a third-year undergraduate student from [Hainan U
 
 I am very fortunate to be guided by [Professor Hua Li](https://cs.hainanu.edu.cn/info/1105/1895.htm) at the School of Computer Science, Hainan University.
 
-You can find my CV here [Wenjie Li's Curriculum Vitae](../assets/Curriculum_Vitae.pdf).
+You can find my CV here: [Wenjie Li's Curriculum Vitae](../assets/Curriculum_Vitae.pdf).
 
 **I’m actively seeking opportunities to pursue a Master’s degree starting from Fall 2024.**
 
