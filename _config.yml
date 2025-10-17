@@ -6,9 +6,9 @@
 # `jekyll serve`. If you change this file, please restart the server process.
 
 # Site Settings
-title                    : "李华"
-description              : "海南省优青，海南省“南海新星”科技创新人才，海南省高层次人才D类。"
-repository               : "lihua881/lihua881.github.io"
+title                    : "李文杰"
+description              : "中南大学在读硕士研究生，主要研究方向为细胞病理图像处理、医学影像分析"
+repository               : "doilion/doilion.github.io"
 google_scholar_stats_use_cdn : true
 
 # google analytics
@@ -21,23 +21,17 @@ baidu_site_verification  : # code-ZxFK3f4pfb
 
 # Site Author
 author:
-  name             : "李华"
-  avatar           : "images/lihua_profile.png"
-  bio              : "海南大学"
-  location         : "海南 海口"
+  name             : "李文杰"
+  avatar           : "images/liwenjie.jpg"
+  bio              : "中南大学"
+  location         : "湖南 长沙"
   employer         :
   pubmed           : 
-  googlescholar    : "https://scholar.google.com.sg/citations?user=0O2iY34AAAAJ&hl"
-  email            : "lihua@hainanu.edu.cn"
+  googlescholar    : "https://scholar.google.com/citations?user=a_dvACsAAAAJ&hl"
+  email            : "254711081@csu.edu.cn"
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
   bitbucket        :
-  codepen          :
-  dribbble         :
-  flickr           :
-  facebook         :
-  foursquare       :
-  github           : "lihua881"
   google_plus      :
   keybase          :
   instagram        :
