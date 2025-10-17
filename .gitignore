@@ -18,3 +18,6 @@ Thumbs.db
 
 # VSCode
 .vscode/
+
+# Claude settings
+.claude/
