@@ -2,3 +2,19 @@ _site/
 push.sh
 .DS_Store
 /github_myprofile_updater/README.md
+
+# Claude Code generated files
+CLAUDE.md
+start_server.bat
+start_server_with_log.bat
+启动说明.txt
+server.log
+
+# Gemfile lock
+Gemfile.lock
+
+# Windows thumbnail cache
+Thumbs.db
+
+# VSCode
+.vscode/

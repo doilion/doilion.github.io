@@ -3,7 +3,22 @@
     "allow": [
       "Bash(netstat:*)",
       "Bash(findstr:*)",
-      "Bash(taskkill:*)"
+      "Bash(taskkill:*)",
+      "Bash(bash:*)",
+      "Bash(ruby:*)",
+      "Bash(where:*)",
+      "Bash(cmd.exe /c \"ruby --version\")",
+      "Bash(cmd.exe /c \"cd /d e:\\code\\lihua881.github.io && ruby --version && bundle --version\")",
+      "Bash(cmd.exe /c \"cd /d e:\\code\\lihua881.github.io && bundle exec jekyll serve --livereload\")",
+      "Bash(powershell -Command \"cd e:\\code\\lihua881.github.io; ruby --version; bundle --version\")",
+      "Bash(C:/Ruby32-x64/bin/bundle.bat install)",
+      "Bash(cmd.exe /c \"set PATH=C:\\Ruby32-x64\\bin;%PATH% && cd /d e:\\code\\lihua881.github.io && bundle install\")",
+      "Bash(powershell -Command \"$env:Path = ''C:\\Ruby32-x64\\bin;'' + $env:Path; cd ''e:\\code\\lihua881.github.io''; bundle install\")",
+      "Bash(powershell -Command \"$env:Path = ''C:\\Ruby32-x64\\bin;'' + $env:Path; cd ''e:\\code\\lihua881.github.io''; ruby --version; bundle --version\")",
+      "Bash(cmd.exe /c \"e:\\code\\lihua881.github.io\\start_server.bat\")",
+      "Bash(ping:*)",
+      "Bash(/c/Ruby34-x64/bin/bundle.bat exec jekyll:*)",
+      "Bash(/c/Ruby34-x64/bin/bundle.bat install:*)"
     ],
     "deny": [],
     "ask": []
