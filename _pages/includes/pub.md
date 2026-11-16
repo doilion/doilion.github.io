@@ -2,6 +2,19 @@
 <span class='anchor' id='-lw'></span>
 # 📝 发表论文 
 
+<div class='paper-box paper-box-noimage'>
+<div class='paper-box-text' markdown="1">
+
+<span class="badge badge-inline">BIBM 2026</span> [CytoSPM: Open-Vocabulary Cytopathology Detection with Structured Prompt Bank](https://arxiv.org/abs/2609.31314)
+
+**Wenjie Li**, Zishan Xu, Jinyang Huang, Zhengxin Nie, Shichao Kan, Yixiong Liang
+
+[**Code**](https://github.com/CVIU-CSU/CytoSPM) \| [**Model**](https://huggingface.co/Doilion111/CytoSPM)
+
+  - This paper presents PentaCyto, a multi-domain cytopathology detection benchmark covering cervical, urinary, respiratory, serous fluid, and thyroid cytology, with 24 base categories and 9 held-out novel categories. It further proposes CytoSPM, a two-stage open-vocabulary detector that first extracts reusable class-agnostic visual representations and then performs class-aware structural prompt matching with class names and cytomorphology prompts. On PentaCyto, CytoSPM outperforms existing methods in novel-category and open-vocabulary detection while maintaining efficient inference.
+</div>
+</div>
+
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICML 2024</div><img src='/paperimgs/diving.webp' alt="paper teaser" width="100%" loading="lazy"></div></div>
 <div class='paper-box-text' markdown="1">
 
