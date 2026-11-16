@@ -107,3 +107,30 @@ h1:before, .anchor:before {
     background-color: #00369f;
     font-size: .8em;
 }
+
+.gs-total {
+    font-size: .6em;
+    font-weight: normal;
+    color: #777;
+    margin-left: .5em;
+}
+
+.gs-note {
+    font-size: .8em;
+    color: #777;
+}
+
+.gs-pub-list {
+    li {
+        margin-bottom: .8em;
+    }
+
+    .gs-pub-title {
+        font-weight: bold;
+    }
+
+    .gs-pub-meta {
+        font-size: .8em;
+        color: #666;
+    }
+}

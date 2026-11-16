@@ -27,7 +27,7 @@ author:
   location         : "湖南 长沙"
   employer         :
   pubmed           : 
-  googlescholar    : "https://scholar.google.com/citations?user=a_dvACsAAAAJ&hl"
+  googlescholar    : "https://scholar.google.com/citations?user=a_dvACsAAAAJ"
   email            : "254711081@csu.edu.cn"
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
@@ -83,7 +83,6 @@ exclude:
   - tmp
   - vendor
   - google_scholar_crawler
-  - github_myprofile_updater
 keep_files:
   - .git
   - .svn
