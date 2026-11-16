@@ -21,3 +21,5 @@ Thumbs.db
 
 # Claude settings
 .claude/
+# Sass cache
+.sass-cache/
