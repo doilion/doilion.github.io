@@ -2,7 +2,6 @@ name: Get Citation Data
 
 on:
   workflow_dispatch:
-  page_build:
   schedule:
     - cron: '0 8 * * *'
 
@@ -12,6 +11,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Google Scholar often stalls requests from CI runners; fail fast instead of hanging.
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
