@@ -1,16 +1,14 @@
-<div class="masthead">
-  <div class="masthead__inner-wrap">
-    <div class="masthead__menu">
-      <nav id="site-nav" class="greedy-nav">
-        <button><div class="navicon"></div></button>
-        <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg masthead__menu-home-item"><a href="#about-me">主页</a></li>
-          {% for link in site.data.navigation.main %}
-            <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}">{{ link.title }}</a></li>
-          {% endfor %}
-        </ul>
-        <ul class="hidden-links hidden"></ul>
-      </nav>
-    </div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="#top">{{ site.title }}</a>
+    <nav id="page-nav" class="site-nav" aria-label="页面导航">
+      <ul class="visible-links">
+        {% for link in site.data.navigation.main %}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
+      <button type="button" class="hidden" aria-label="更多栏目" aria-expanded="false"><span class="site-nav__icon"></span></button>
+      <ul class="hidden-links hidden"></ul>
+    </nav>
   </div>
-</div>
+</header>

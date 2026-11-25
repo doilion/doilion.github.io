@@ -1,4 +1,11 @@
-<script src="assets/js/main.min.js"></script>
+<script src="{{ '/assets/js/main.min.js' | relative_url }}"></script>
+<script>
+  {% if site.google_scholar_stats_use_cdn %}
+  window.GS_DATA_URL = 'https://cdn.jsdelivr.net/gh/{{ site.repository }}@google-scholar-stats/gs_data.json';
+  {% else %}
+  window.GS_DATA_URL = 'https://raw.githubusercontent.com/{{ site.repository }}/google-scholar-stats/gs_data.json';
+  {% endif %}
+</script>
+<script src="{{ '/assets/js/site.js' | relative_url }}"></script>
 
-{% include analytics.html %}
-{% include fetch_google_scholar_stats.html %}
+{% if site.google_analytics_id %}{% include analytics.html %}{% endif %}

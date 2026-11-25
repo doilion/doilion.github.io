@@ -1,19 +1,19 @@
-# main links links
+# Links shown in the top navigation bar.
 main:
   - title: "简介"
-    url: "/#about-me"
+    url: "#about"
 
-  - title: "教育经历"
-    url: "/#-jy"
+  - title: "教育"
+    url: "#education"
 
-  - title: "发表论文"
-    url: "/#-lw"
+  - title: "论文"
+    url: "#publications"
 
-  - title: "实习经历"
-    url: "/#-sx"
+  - title: "实习"
+    url: "#experience"
 
-  - title: "项目经历"
-    url: "/#-xm"
+  - title: "项目"
+    url: "#projects"
 
-  - title: "技能与获奖"
-    url: "/#-kyjs"
+  - title: "获奖"
+    url: "#awards"
