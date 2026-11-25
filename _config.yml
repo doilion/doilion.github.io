@@ -23,7 +23,7 @@ baidu_site_verification  : # code-ZxFK3f4pfb
 author:
   name             : "李文杰"
   avatar           : "images/liwenjie.jpg"
-  bio              : "中南大学 · 计算机硕士在读"
+  bio              : "中南大学"
   location         : "湖南 长沙"
   employer         :
   pubmed           : 
@@ -73,6 +73,7 @@ exclude:
   - LICENSE
   - README
   - Rakefile
+  - assets/js/_main.js
   - assets/js/plugins
   - assets/js/vendor
   - config

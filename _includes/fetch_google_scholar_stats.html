@@ -1,0 +1,68 @@
+<script>
+    $(document).ready(function () {
+        {% if site.google_scholar_stats_use_cdn %}
+        var gsDataBaseUrl = 'https://cdn.jsdelivr.net/gh/{{ site.repository }}@'
+        {% else %}
+        var gsDataBaseUrl = 'https://raw.githubusercontent.com/{{ site.repository }}/'
+        {% endif %}
+        $.getJSON(gsDataBaseUrl + "google-scholar-stats/gs_data.json", function (data) {
+            var pubs = data['publications'] || {};
+
+            // Per-paper citation counts: <span class='show_paper_citations' data='PUB_ID'></span>
+            var citationEles = document.getElementsByClassName('show_paper_citations')
+            Array.prototype.forEach.call(citationEles, function (element) {
+                var pub = pubs[element.getAttribute('data')]
+                if (pub) element.innerHTML = '| Citations: ' + pub['num_citations'];
+            });
+
+            // Full publication list, synced from Google Scholar
+            var box = document.getElementById('gs-pubs');
+            var list = document.getElementById('gs-pub-list');
+            if (!box || !list) return;
+            var items = Object.keys(pubs).map(function (id) {
+                var p = pubs[id], bib = p['bib'] || {};
+                return {
+                    id: id,
+                    title: bib['title'] || '',
+                    year: parseInt(bib['pub_year'], 10) || 0,
+                    venue: bib['citation'] || '',
+                    cites: p['num_citations'] || 0
+                };
+            }).filter(function (p) { return p.title; });
+            if (!items.length) return;
+            items.sort(function (a, b) { return (b.year - a.year) || (b.cites - a.cites); });
+
+            var scholarId = data['scholar_id'];
+            items.forEach(function (p) {
+                var li = document.createElement('li');
+                var title = document.createElement(scholarId ? 'a' : 'span');
+                title.className = 'gs-pub-title';
+                title.textContent = p.title;
+                if (scholarId) {
+                    title.href = 'https://scholar.google.com/citations?view_op=view_citation&user=' +
+                        encodeURIComponent(scholarId) + '&citation_for_view=' + encodeURIComponent(p.id);
+                }
+                li.appendChild(title);
+                var meta = document.createElement('div');
+                meta.className = 'gs-pub-meta';
+                var parts = [];
+                if (p.venue) parts.push(p.venue);
+                else if (p.year) parts.push(String(p.year));
+                if (p.cites > 0) parts.push('被引 ' + p.cites);
+                meta.textContent = parts.join(' · ');
+                li.appendChild(meta);
+                list.appendChild(li);
+            });
+
+            var total = document.getElementById('gs-total');
+            if (total && data['citedby'] != null) {
+                total.textContent = '共 ' + items.length + ' 篇 · 总被引 ' + data['citedby'];
+            }
+            var updated = document.getElementById('gs-updated');
+            if (updated && data['updated']) {
+                updated.textContent = '（更新于 ' + String(data['updated']).slice(0, 10) + '）';
+            }
+            box.style.display = '';
+        });
+    })
+</script>
