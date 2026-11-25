@@ -3,10 +3,17 @@ main:
   - title: "简介"
     url: "/#about-me"
 
+  - title: "教育经历"
+    url: "/#-jy"
+
   - title: "发表论文"
     url: "/#-lw"
 
-  - title: "科研竞赛"
+  - title: "实习经历"
+    url: "/#-sx"
+
+  - title: "项目经历"
+    url: "/#-xm"
+
+  - title: "技能与获奖"
     url: "/#-kyjs"
-
-

@@ -7,7 +7,7 @@
 
 # Site Settings
 title                    : "李文杰"
-description              : "中南大学在读硕士研究生，主要研究方向为细胞病理图像处理、医学影像分析"
+description              : "中南大学计算机科学与技术硕士在读，研究方向为开放词汇视觉理解、多模态 Agent"
 repository               : "doilion/doilion.github.io"
 google_scholar_stats_use_cdn : true
 
@@ -28,7 +28,8 @@ author:
   employer         :
   pubmed           : 
   googlescholar    : "https://scholar.google.com/citations?user=a_dvACsAAAAJ"
-  email            : "254711081@csu.edu.cn"
+  email            : "wenjieli0327@163.com"
+  github           : "doilion"
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
   bitbucket        :

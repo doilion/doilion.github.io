@@ -2,16 +2,18 @@
 <span class='anchor' id='-lw'></span>
 # 📝 发表论文 
 
-<div class='paper-box paper-box-noimage'>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">IEEE BIBM 2026</div><img src='/paperimgs/cytospm.png' alt="CytoSPM overview" width="100%" loading="lazy"></div></div>
 <div class='paper-box-text' markdown="1">
 
-<span class="badge badge-inline">BIBM 2026</span> [CytoSPM: Open-Vocabulary Cytopathology Detection with Structured Prompt Bank](https://arxiv.org/abs/2609.31314)
+[CytoSPM: Open-Vocabulary Cytopathology Detection with Structured Prompt Bank](https://arxiv.org/abs/2609.31314)
 
-**Wenjie Li**, Zishan Xu, Jinyang Huang, Zhengxin Nie, Shichao Kan, Yixiong Liang
+**Wenjie Li**\#, Zishan Xu\#, Jinyang Huang, Zhengxin Nie, Shichao Kan, Yixiong Liang*
+
+*第一作者（\# 共同一作） · CCF-B*
 
 [**Code**](https://github.com/CVIU-CSU/CytoSPM) \| [**Model**](https://huggingface.co/Doilion111/CytoSPM)
 
-  - This paper presents PentaCyto, a multi-domain cytopathology detection benchmark covering cervical, urinary, respiratory, serous fluid, and thyroid cytology, with 24 base categories and 9 held-out novel categories. It further proposes CytoSPM, a two-stage open-vocabulary detector that first extracts reusable class-agnostic visual representations and then performs class-aware structural prompt matching with class names and cytomorphology prompts. On PentaCyto, CytoSPM outperforms existing methods in novel-category and open-vocabulary detection while maintaining efficient inference.
+  - 构建首个多域开放词汇细胞病理检测基准 PentaCyto（5 个领域、33 类、16.6 万图、94.1 万框）。模型先定位细胞，再将图像特征与各类细胞的名称和形态描述比对，以识别新类别。Novel AP 达 **15.00**（较 YOLO-World-L 高 1.30），推理速度 **25.8 FPS**。
 </div>
 </div>
 
@@ -22,8 +24,10 @@
 
 Shijie Lian, Ziyi Zhang, Hua Li*, **Wenjie Li**, Laurence Tianruo Yang, Sam Kwong, Runmin Cong.
 
+*第四作者 · CCF-A*
+
 [**Code**](https://github.com/LiamLian0727/USIS10K)
-  - This paper introduces the first large-scale underwater salient instance segmentation dataset (USIS10K) and proposes the USIS-SAM architecture based on the Segment Anything Model (SAM) for underwater vision tasks. The model incorporates an Underwater Adaptive Visual Transformer (UA-ViT) and an automatic Salient Feature Prompter Generator (SFPG) to improve segmentation accuracy in complex underwater environments.
+  - 提出首个大规模水下显著性实例分割数据集 USIS10K 与基于 SAM 的 USIS-SAM，可自动生成水下显著性提示。本人参与构建 USIS10K，负责数据采集、去重、标注、格式转换与实验验证。Google Scholar 被引 100+，GitHub 100+ Stars。
 </div>
 </div>
 
@@ -35,7 +39,9 @@ Shijie Lian, Ziyi Zhang, Hua Li*, **Wenjie Li**, Laurence Tianruo Yang, Sam Kwon
 
 Hua Li, Junyan Liang, **Wenjie Li**, Wenhui Wu*
 
-  - This paper proposes FSNet, an end-to-end frequency domain guided superpixel segmentation network designed for complex scenes. FSNet generates superpixels with sharp boundary adherence by fusing deep features from both spatial and frequency domains. An improved frequency information extractor (IFIE) captures frequency domain details with sharp boundary features, while a dense hybrid atrous convolution (DHAC) block preserves semantic information by capturing broader and deeper spatial features. The fusion of these features enables the generation of semantic perceptual superpixels with enhanced boundary accuracy.
+*第三作者（学生二作） · CCF-A*
+
+  - 提出频域引导的端到端超像素分割网络 FSNet，融合空间域与频域的深层特征，在复杂场景下生成边界贴合更好的超像素。
 </div>
 </div>
 
@@ -44,7 +50,9 @@ Hua Li, Junyan Liang, **Wenjie Li**, Wenhui Wu*
 
 [HCMANet: Hierarchical Cross-Modality Attention Network for Underwater Salient Object Detection](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10925087)
 
-Yu Wang, **Wenjie Li**, Zhiyang Yu, Yi Xue, Hua Li*
+Yu Wang\#, **Wenjie Li**\#, Zhiyang Yu, Yi Xue, Hua Li*
+
+*共同一作（署名第二） · CCF-C*
 
 </div>
 </div>
